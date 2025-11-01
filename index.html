@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estate Planning Questionnaire - Turner Law Firm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(to bottom, #f8f8f8 0%, #ffffff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header .tagline {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        fieldset {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 35px;
+            margin-bottom: 35px;
+            background-color: #fafafa;
+        }
+
+        legend {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1a1a1a;
+            padding: 0 20px;
+            background-color: #ffffff;
+            border: 2px solid #1a1a1a;
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: #1a1a1a;
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h4 {
+            color: #444;
+            font-size: 1.05em;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.02em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1.05em;
+            font-family: inherit;
+            background-color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 5px rgba(26, 26, 26, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 12px 0;
+        }
+
+        .radio-group label,
+        .checkbox-group label {
+            display: inline-flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 1.02em;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .child-info-group,
+        .bequest-group,
+        .agent-section,
+        .document-section {
+            background-color: #fff;
+            padding: 25px;
+            margin: 18px 0;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .document-section {
+            padding: 18px;
+        }
+
+        .document-request-section {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .checkbox-group {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 45px 0;
+        }
+
+        button[type="submit"] {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        .note {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffd700;
+            padding: 18px;
+            margin: 18px 0;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .instructions {
+            background-color: #e8f4f8;
+            border-left: 4px solid #4a90e2;
+            padding: 18px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            fieldset {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            button[type="submit"] {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TURNER LAW FIRM<span style="font-size: 0.6em;">, PLLC</span></h1>
+            <p class="tagline">"Because Life Happens"</p>
+            <h2 style="margin-top: 20px; color: #444; font-size: 1.6em;">Estate Planning Questionnaire</h2>
+        </div>
+
+        <div class="instructions">
+            <p><strong>Important:</strong> All information you provide is strictly confidential. This questionnaire helps us understand your estate planning needs and makes our meeting more efficient.</p>
+            <p>Please include <strong>FULL NAMES</strong> (First, Middle, Last), gender, and relationship (son, daughter, etc.) for all persons listed.</p>
+        </div>
+
+        <form action="/submit-estate-plan-questionnaire" method="POST">
+            <fieldset>
+                <legend>Client and Family Information</legend>
+                
+                <h3>1. Personal Details</h3>
+                <div class="form-group">
+                    <label for="full_name">Full Name: *</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob">
+                </div>
+                <div class="form-group">
+                    <label for="metlife_id">MetLife Eligibility ID:</label>
+                    <input type="text" id="metlife_id" name="metlife_id">
+                </div>
+                <div class="form-group">
+                    <label for="arag_case_number">ARAG Case Assist Number(s):</label>
+                    <input type="text" id="arag_case_number" name="arag_case_number">
+                </div>
+
+                <h3>2. Contact Information</h3>
+                <div class="form-group">
+                    <label for="address_county">Address/County:</label>
+                    <textarea id="address_county" name="address_county"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="work_phone">Work Phone:</label>
+                    <input type="tel" id="work_phone" name="work_phone">
+                </div>
+                <div class="form-group">
+                    <label for="fax">Fax:</label>
+                    <input type="tel" id="fax" name="fax">
+                </div>
+
+                <h3>3. Contact Information (continued)</h3>
+                <div class="form-group">
+                    <label for="home_phone">Home Phone:</label>
+                    <input type="tel" id="home_phone" name="home_phone">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address: *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="cell_phone">Cell Phone:</label>
+                    <input type="tel" id="cell_phone" name="cell_phone">
+                </div>
+
+                <h3>4. Your Employment Status</h3>
+                <div class="form-group radio-group">
+                    <label><input type="radio" id="employed" name="employment_status" value="Employed"> Employed</label>
+                    <label><input type="radio" id="self_employed" name="employment_status" value="Self Employed"> Self Employed</label>
+                    <label><input type="radio" id="retired" name="employment_status" value="Retired"> Retired</label>
+                    <label><input type="radio" id="other_employment" name="employment_status" value="Other"> Other</label>
+                </div>
+                <div class="form-group">
+                    <label for="employer_line_of_work">Employer / Line of Work:</label>
+                    <input type="text" id="employer_line_of_work" name="employer_line_of_work">
+                </div>
+
+                <h3>5. Marital Status</h3>
+                <div class="form-group radio-group">
+                    <label><input type="radio" id="single" name="marital_status" value="Single"> Single</label>
+                    <label><input type="radio" id="married" name="marital_status" value="Married"> Married</label>
+                    <label><input type="radio" id="divorced" name="marital_status" value="Divorced"> Divorced</label>
+                    <label><input type="radio" id="separated" name="marital_status" value="Separated"> Separated</label>
+                    <label><input type="radio" id="widowed" name="marital_status" value="Widowed"> Widowed</label>
+                </div>
+
+                <h3>6. Spouse Information (if applicable)</h3>
+                <div class="form-group">
+                    <label for="spouse_full_name">Full Name of Spouse:</label>
+                    <input type="text" id="spouse_full_name" name="spouse_full_name">
+                </div>
+                <div class="form-group">
+                    <label for="spouse_dob">Date of Birth:</label>
+                    <input type="date" id="spouse_dob" name="spouse_dob">
+                </div>
+
+                <h3>7. Spouse's Employment Status</h3>
+                <div class="form-group radio-group">
+                    <label><input type="radio" id="spouse_employed" name="spouse_employment_status" value="Employed"> Employed</label>
+                    <label><input type="radio" id="spouse_self_employed" name="spouse_employment_status" value="Self Employed"> Self Employed</label>
+                    <label><input type="radio" id="spouse_retired" name="spouse_employment_status" value="Retired"> Retired</label>
+                    <label><input type="radio" id="spouse_other" name="spouse_employment_status" value="Other"> Other</label>
+                </div>
+                <div class="form-group">
+                    <label for="spouse_employer_line_of_work">Employer / Line of Work:</label>
+                    <input type="text" id="spouse_employer_line_of_work" name="spouse_employer_line_of_work">
+                </div>
+
+                <h3>8. Information about your children (if any)</h3>
+                <div class="note">
+                    <p>Please include FULL NAMES (First, Middle, Last), age, address, and phone number for each child.</p>
+                </div>
+                
+                <div class="child-info-group">
+                    <h4>Child 1</h4>
+                    <div class="form-group">
+                        <label for="child1_name">Full Name:</label>
+                        <input type="text" id="child1_name" name="child1_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="child1_age">Age:</label>
+                        <input type="number" id="child1_age" name="child1_age" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="child1_address">Address:</label>
+                        <input type="text" id="child1_address" name="child1_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="child1_phone">Phone:</label>
+                        <input type="tel" id="child1_phone" name="child1_phone">
+                    </div>
+                </div>
+
+                <div class="child-info-group">
+                    <h4>Child 2</h4>
+                    <div class="form-group">
+                        <label for="child2_name">Full Name:</label>
+                        <input type="text" id="child2_name" name="child2_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="child2_age">Age:</label>
+                        <input type="number" id="child2_age" name="child2_age" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="child2_address">Address:</label>
+                        <input type="text" id="child2_address" name="child2_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="child2_phone">Phone:</label>
+                        <input type="tel" id="child2_phone" name="child2_phone">
+                    </div>
+                </div>
+
+                <div class="child-info-group">
+                    <h4>Child 3</h4>
+                    <div class="form-group">
+                        <label for="child3_name">Full Name:</label>
+                        <input type="text" id="child3_name" name="child3_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="child3_age">Age:</label>
+                        <input type="number" id="child3_age" name="child3_age" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="child3_address">Address:</label>
+                        <input type="text" id="child3_address" name="child3_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="child3_phone">Phone:</label>
+                        <input type="tel" id="child3_phone" name="child3_phone">
+                    </div>
+                </div>
+
+                <div class="child-info-group">
+                    <h4>Child 4</h4>
+                    <div class="form-group">
+                        <label for="child4_name">Full Name:</label>
+                        <input type="text" id="child4_name" name="child4_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="child4_age">Age:</label>
+                        <input type="number" id="child4_age" name="child4_age" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="child4_address">Address:</label>
+                        <input type="text" id="child4_address" name="child4_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="child4_phone">Phone:</label>
+                        <input type="tel" id="child4_phone" name="child4_phone">
+                    </div>
+                </div>
+            </fieldset>
+        
+            <hr>
+            
+            <fieldset>
+                <legend>Document Status and Requests</legend>
+                
+                <h3>9. Have you ever drafted or had someone draft for you any of the following documents:</h3>
+                
+                <div class="document-section">
+                    <h4>Durable Power of Attorney</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" id="dpoa_drafted_yes" name="dpoa_drafted" value="Yes"> Yes</label>
+                        <label><input type="radio" id="dpoa_drafted_no" name="dpoa_drafted" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h4>Healthcare Power of Attorney</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" id="hcpoa_drafted_yes" name="hcpoa_drafted" value="Yes"> Yes</label>
+                        <label><input type="radio" id="hcpoa_drafted_no" name="hcpoa_drafted" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h4>Living Will/Advanced Directive/Declaration of Desire for Natural Death</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" id="livingwill_drafted_yes" name="livingwill_drafted" value="Yes"> Yes</label>
+                        <label><input type="radio" id="livingwill_drafted_no" name="livingwill_drafted" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h4>Last Will and Testament</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" id="will_drafted_yes" name="will_drafted" value="Yes"> Yes</label>
+                        <label><input type="radio" id="will_drafted_no" name="will_drafted" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="document-section">
+                    <h4>Trust</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" id="trust_drafted_yes" name="trust_drafted" value="Yes"> Yes</label>
+                        <label><input type="radio" id="trust_drafted_no" name="trust_drafted" value="No"> No</label>
+                    </div>
+                </div>
+                
+                <h3>10. Would you like Turner Law Firm, PLLC to draft any of these documents for you:</h3>
+                <p style="margin-bottom: 15px; font-style: italic;">Use checkboxes to select all that apply.</p>
+                
+                <div class="document-request-section checkbox-group">
+                    <label><input type="checkbox" id="dpoa_request" name="dpoa_request" value="Yes"> Durable Power of Attorney</label>
+                    <label><input type="checkbox" id="hcpoa_request" name="hcpoa_request" value="Yes"> Healthcare Power of Attorney</label>
+                    <label><input type="checkbox" id="livingwill_request" name="livingwill_request" value="Yes"> Living Will/Advanced Directive/Declaration of Desire for Natural Death</label>
+                    <label><input type="checkbox" id="will_request" name="will_request" value="Yes"> Last Will and Testament</label>
+                    <label><input type="checkbox" id="trust_request" name="trust_request" value="Yes"> Trust</label>
+                </div>
+            </fieldset>
+            
+            <hr>
+            
+            <fieldset>
+                <legend>Tax, Assets, and Agent Selections</legend>
+
+                <h3>11. Tax Status</h3>
+                <p style="margin-bottom: 15px;">For tax purposes please check the appropriate block:</p>
+                
+                <div class="form-group">
+                    <p style="font-weight: 600; margin-bottom: 8px;">a. Are you a US Citizen?</p>
+                    <div class="radio-group">
+                        <label><input type="radio" id="us_citizen_yes" name="us_citizen" value="Yes"> Yes</label>
+                        <label><input type="radio" id="us_citizen_no" name="us_citizen" value="No"> No</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <p style="font-weight: 600; margin-bottom: 8px;">b. Are you a Resident Alien?</p>
+                    <div class="radio-group">
+                        <label><input type="radio" id="resident_alien_yes" name="resident_alien" value="Yes"> Yes</label>
+                        <label><input type="radio" id="resident_alien_no" name="resident_alien" value="No"> No</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <p style="font-weight: 600; margin-bottom: 8px;">c. Are you a Non-Resident Alien?</p>
+                    <div class="radio-group">
+                        <label><input type="radio" id="non_resident_alien_yes" name="non_resident_alien" value="Yes"> Yes</label>
+                        <label><input type="radio" id="non_resident_alien_no" name="non_resident_alien" value="No"> No</label>
+                    </div>
+                </div>
+                
+                <h3>12. Asset Value</h3>
+                <div class="form-group">
+                    <p style="font-weight: 600; margin-bottom: 8px;">Do you have total assets that exceed $10 million in Value?</p>
+                    <div class="radio-group">
+                        <label><input type="radio" id="assets_over_10m_yes" name="assets_over_10m" value="Yes"> Yes</label>
+                        <label><input type="radio" id="assets_over_10m_no" name="assets_over_10m" value="No"> No</label>
+                    </div>
+                </div>
+                
+                <h3>13. Organ Donor Status</h3>
+                <div class="form-group">
+                    <p style="font-weight: 600; margin-bottom: 8px;">Are you an Organ Donor?</p>
+                    <div class="radio-group">
+                        <label><input type="radio" id="organ_donor_yes" name="organ_donor" value="Yes"> Yes</label>
+                        <label><input type="radio" id="organ_donor_no" name="organ_donor" value="No"> No</label>
+                    </div>
+                </div>
+
+                <h3>14. General Power of Attorney Agent</h3>
+                <div class="note">
+                    <p>The person who will act on your behalf in financial or business transactions.</p>
+                </div>
+                
+                <div class="agent-section">
+                    <h4>First Choice Agent</h4>
+                    <div class="form-group">
+                        <label for="gpoa_agent_name">Full Name:</label>
+                        <input type="text" id="gpoa_agent_name" name="gpoa_agent_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="gpoa_agent_relationship">Relationship:</label>
+                        <input type="text" id="gpoa_agent_relationship" name="gpoa_agent_relationship">
+                    </div>
+                    
+                    <h4>Successor Agent 1 (Alternate)</h4>
+                    <div class="form-group">
+                        <label for="gpoa_successor1_name_rel">Full Name and Relationship:</label>
+                        <input type="text" id="gpoa_successor1_name_rel" name="gpoa_successor1_name_rel">
+                    </div>
+                    
+                    <h4>Successor Agent 2 (Alternate)</h4>
+                    <div class="form-group">
+                        <label for="gpoa_successor2_name_rel">Full Name and Relationship:</label>
+                        <input type="text" id="gpoa_successor2_name_rel" name="gpoa_successor2_name_rel">
+                    </div>
+                </div>
+
+                <h3>15. Health Care Agent</h3>
+                <div class="note">
+                    <p>The person who will make medical decisions on your behalf.</p>
+                </div>
+                
+                <div class="agent-section">
+                    <h4>First Choice Agent</h4>
+                    <div class="form-group">
+                        <label for="hca_agent_name">Full Name:</label>
+                        <input type="text" id="hca_agent_name" name="hca_agent_name">
+                    </div>
+                    <div class="form-group">
+                        <label for="hca_agent_relationship">Relationship:</label>
+                        <input type="text" id="hca_agent_relationship" name="hca_agent_relationship">
+                    </div>
+                    
+                    <h4>Successor Agent 1 (Alternate)</h4>
+                    <div class="form-group">
+                        <label for="hca_successor1_name_rel">Full Name and Relationship:</label>
+                        <input type="text" id="hca_successor1_name_rel" name="hca_successor1_name_rel">
+                    </div>
+                    
+                    <h4>Successor Agent 2 (Alternate)</h4>
+                    <div class="form-group">
+                        <label for="hca_successor2_name_rel">Full Name and Relationship:</label>
+                        <input type="text" id="hca_successor2_name_rel" name="hca_successor2_name_rel">
+                    </div>
+                </div>
+                
+                <h3>16. Burial or Funeral Instructions</h3>
+                <div class="note">
+                    <p>List any specific instructions (cremation/disposition of remains, particular service type and/or location, etc.).</p>
+                </div>
+                <div class="form-group">
+                    <textarea id="funeral_instructions" name="funeral_instructions" rows="4"></textarea>
+                </div>
+
+                <h3>17. Specific Bequests</h3>
+                <p style="margin-bottom: 15px; font-style: italic;">Specific items or monetary amounts for particular people or charities</p>
+                
+                <div class="bequest-group">
+                    <h4>Bequest 1</h4>
+                    <div class="form-group">
+                        <label for="bequest1_item">Item (description):</label>
+                        <input type="text" id="bequest1_item" name="bequest1_item">
+                    </div>
+                    <div class="form-group">
+                        <label for="bequest1_person">Person/Charity:</label>
+                        <input type="text" id="bequest1_person" name="bequest1_person">
+                    </div>
+                </div>
+                
+                <div class="bequest-group">
+                    <h4>Bequest 2</h4>
+                    <div class="form-group">
+                        <label for="bequest2_item">Item (description):</label>
+                        <input type="text" id="bequest2_item" name="bequest2_item">
+                    </div>
+                    <div class="form-group">
+                        <label for="bequest2_person">Person/Charity:</label>
+                        <input type="text" id="bequest2_person" name="bequest2_person">
+                    </div>
+                </div>
+
+                <div class="bequest-group">
+                    <h4>Bequest 3</h4>
+                    <div class="form-group">
+                        <label for="bequest3_item">Item (description):</label>
+                        <input type="text" id="bequest3_item" name="bequest3_item">
+                    </div>
+                    <div class="form-group">
+                        <label for="bequest3_person">Person/Charity:</label>
+                        <input type="text" id="bequest3_person" name="bequest3_person">
+                    </div>
+                </div>
+
+                <div class="bequest-group">
+                    <h4>Bequest 4</h4>
+                    <div class="form-group">
+                        <label for="bequest4_item">Item (description):</label>
+                        <input type="text" id="bequest4_item" name="bequest4_item">
+                    </div>
+                    <div class="form-group">
+                        <label for="bequest4_person">Person/Charity:</label>
+                        <input type="text" id="bequest4_person" name="bequest4_person">
+                    </div>
+                </div>
+
+                <h3>18. Residuary Beneficiaries</h3>
+                <p style="margin-bottom: 15px;">Full Name of person(s) who will receive the remainder of your real and personal property.</p>
+                
+                <div class="form-group">
+                    <label for="residuary1_name_rel">Full Name and Relationship:</label>
+                    <input type="text" id="residuary1_name_rel" name="residuary1_name_rel">
+                </div>
+                <div class="form-group">
+                    <label for="residuary2_name_rel">Full Name and Relationship:</label>
+                    <input type="text" id="residuary2_name_rel" name="residuary2_name_rel">
+                </div>
+                <div class="form-group">
+                    <label for="residuary3_name_rel">Full Name and Relationship:</label>
+                    <input type="text" id="residuary3_name_rel" name="residuary3_name_rel">
+                </div>
+                <div class="form-group">
+                    <label for="residuary4_name_rel">Full Name and Relationship:</label>
+                    <input type="text" id="residuary4_name_rel" name="residuary4_name_rel">
+                </div>
+
+                <h3>19. Guardian for Minor Children</h3>
+                <p style="margin-bottom: 15px; font-style: italic;">If you and your spouse both decease</p>
+                
+                <div class="agent-section">
+                    <h4>Primary Guardian</h4>
+                    <div class="form-group">
+                        <label for="guardian_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="guardian_name_rel" name="guardian_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="guardian_address">Address:</label>
+                        <input type="text" id="guardian_address" name="guardian_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="guardian_phone">Phone Number:</label>
+                        <input type="tel" id="guardian_phone" name="guardian_phone">
+                    </div>
+                </div>
+                
+                <div class="agent-section">
+                    <h4>Successor Guardian 1</h4>
+                    <div class="form-group">
+                        <label for="successor_guardian1_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="successor_guardian1_name_rel" name="successor_guardian1_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_guardian1_address">Address:</label>
+                        <input type="text" id="successor_guardian1_address" name="successor_guardian1_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_guardian1_phone">Phone Number:</label>
+                        <input type="tel" id="successor_guardian1_phone" name="successor_guardian1_phone">
+                    </div>
+                </div>
+
+                <div class="agent-section">
+                    <h4>Successor Guardian 2</h4>
+                    <div class="form-group">
+                        <label for="successor_guardian2_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="successor_guardian2_name_rel" name="successor_guardian2_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_guardian2_address">Address:</label>
+                        <input type="text" id="successor_guardian2_address" name="successor_guardian2_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_guardian2_phone">Phone Number:</label>
+                        <input type="tel" id="successor_guardian2_phone" name="successor_guardian2_phone">
+                    </div>
+                </div>
+
+                <h3>20. Executor of Your Estate</h3>
+                
+                <div class="agent-section">
+                    <h4>Primary Executor</h4>
+                    <div class="form-group">
+                        <label for="executor1_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="executor1_name_rel" name="executor1_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="executor1_address">Address:</label>
+                        <input type="text" id="executor1_address" name="executor1_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="executor1_phone">Phone Number:</label>
+                        <input type="tel" id="executor1_phone" name="executor1_phone">
+                    </div>
+                </div>
+
+                <div class="agent-section">
+                    <h4>Successor Executor 1</h4>
+                    <div class="form-group">
+                        <label for="successor_executor1_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="successor_executor1_name_rel" name="successor_executor1_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_executor1_address">Address:</label>
+                        <input type="text" id="successor_executor1_address" name="successor_executor1_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_executor1_phone">Phone Number:</label>
+                        <input type="tel" id="successor_executor1_phone" name="successor_executor1_phone">
+                    </div>
+                </div>
+
+                <div class="agent-section">
+                    <h4>Successor Executor 2</h4>
+                    <div class="form-group">
+                        <label for="successor_executor2_name_rel">Full Name/Relationship:</label>
+                        <input type="text" id="successor_executor2_name_rel" name="successor_executor2_name_rel">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_executor2_address">Address:</label>
+                        <input type="text" id="successor_executor2_address" name="successor_executor2_address">
+                    </div>
+                    <div class="form-group">
+                        <label for="successor_executor2_phone">Phone Number:</label>
+                        <input type="tel" id="successor_executor2_phone" name="successor_executor2_phone">
+                    </div>
+                </div>
+
+                <h3>21. Additional Information</h3>
+                <p style="margin-bottom: 15px;">For example: Own property out of the country, etc.</p>
+                <div class="form-group">
+                    <textarea id="additional_info" name="additional_info" rows="8"></textarea>
+                </div>
+            </fieldset>
+
+            <button type="submit">Submit Questionnaire</button>
+        </form>
+
+        <div class="footer">
+            <p><strong>Turner Law Firm, PLLC</strong></p>
+            <p style="margin-top: 10px;">Charlotte Office: 13950 Ballantyne Corporate Pl., Ste. 160, Charlotte, NC 28277 | O: 704-496-9095</p>
+            <p>Cary Office: 5000 Centre Green Way, Ste. 500, Cary, NC 27513 | O: 919-998-8311</p>
+            <p style="margin-top: 10px;">Email: Tiffany@TurnerLawFirmPLLC.com | www.TurnerLawFirmPLLC.com</p>
+        </div>
+    </div>
+</body>
+</html>
