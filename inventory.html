@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset & Property Inventory - Turner Law Firm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(to bottom, #f8f8f8 0%, #ffffff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header .tagline {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .header h2 {
+            color: #444;
+            font-size: 1.6em;
+            margin-top: 20px;
+        }
+
+        .intro {
+            background-color: #e8f4f8;
+            border-left: 4px solid #4a90e2;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .intro p {
+            margin-bottom: 10px;
+        }
+
+        fieldset {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 35px;
+            margin-bottom: 35px;
+            background-color: #fafafa;
+        }
+
+        legend {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1a1a1a;
+            padding: 0 20px;
+            background-color: #ffffff;
+            border: 2px solid #1a1a1a;
+            border-radius: 5px;
+        }
+
+        h3 {
+            color: #1a1a1a;
+            font-size: 1.2em;
+            margin-top: 30px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        h4 {
+            color: #444;
+            font-size: 1.05em;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.02em;
+        }
+
+        .required {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1.05em;
+            font-family: inherit;
+            background-color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 5px rgba(26, 26, 26, 0.2);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .asset-item {
+            background-color: #fff;
+            padding: 25px;
+            margin: 18px 0;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .note {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin: 18px 0;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .summary-box {
+            background-color: #f0f8f0;
+            border: 2px solid #4CAF50;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 25px 0;
+        }
+
+        .summary-box h4 {
+            color: #2d5c2d;
+            margin-top: 0;
+        }
+
+        button[type="submit"] {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 45px 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            fieldset {
+                padding: 20px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            button[type="submit"] {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TURNER LAW FIRM<span style="font-size: 0.6em;">, PLLC</span></h1>
+            <p class="tagline">"Because Life Happens"</p>
+            <h2>Asset & Property Inventory</h2>
+        </div>
+
+        <div class="intro">
+            <p><strong>Why Complete This Form?</strong></p>
+            <p>A comprehensive asset inventory helps us create an estate plan tailored to your specific situation. This information is strictly confidential and will be used only for your legal services.</p>
+            <p><strong>Tip:</strong> Gather bank statements, investment statements, deeds, titles, and insurance policies to make this easier to complete.</p>
+        </div>
+
+        <form action="/submit-asset-inventory" method="POST">
+            
+            <!-- CLIENT INFORMATION -->
+            <fieldset>
+                <legend>Client Information</legend>
+                
+                <div class="form-group">
+                    <label for="client_name">Full Name <span class="required">*</span></label>
+                    <input type="text" id="client_name" name="client_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="client_email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="client_email" name="client_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="spouse_name">Spouse Name (if applicable)</label>
+                    <input type="text" id="spouse_name" name="spouse_name">
+                </div>
+
+                <div class="form-group">
+                    <label for="date_completed">Date Completed</label>
+                    <input type="text" id="date_completed" name="date_completed" placeholder="MM/DD/YYYY">
+                </div>
+            </fieldset>
+
+            <!-- REAL ESTATE -->
+            <fieldset>
+                <legend>Real Estate / Real Property</legend>
+                
+                <div class="note">
+                    <p>Include all real property you own: homes, land, rental properties, time shares, etc.</p>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Property #1</h4>
+                    <div class="form-group">
+                        <label for="property1_type">Property Type</label>
+                        <select id="property1_type" name="property1_type">
+                            <option value="">-- Select --</option>
+                            <option value="Primary Residence">Primary Residence</option>
+                            <option value="Vacation Home">Vacation Home</option>
+                            <option value="Rental Property">Rental Property</option>
+                            <option value="Land">Land/Lot</option>
+                            <option value="Commercial">Commercial Property</option>
+                            <option value="Timeshare">Timeshare</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="property1_address">Address</label>
+                        <input type="text" id="property1_address" name="property1_address">
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="property1_value">Estimated Value</label>
+                            <input type="text" id="property1_value" name="property1_value" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="property1_mortgage">Mortgage Balance</label>
+                            <input type="text" id="property1_mortgage" name="property1_mortgage" placeholder="$">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="property1_ownership">How is title held?</label>
+                        <select id="property1_ownership" name="property1_ownership">
+                            <option value="">-- Select --</option>
+                            <option value="Sole Ownership">Sole Ownership (your name only)</option>
+                            <option value="Joint Tenants">Joint Tenants with Right of Survivorship</option>
+                            <option value="Tenants in Common">Tenants in Common</option>
+                            <option value="Tenants by Entirety">Tenants by the Entirety (married)</option>
+                            <option value="Trust">In Trust</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="property1_deed_location">Where is the deed located?</label>
+                        <input type="text" id="property1_deed_location" name="property1_deed_location" placeholder="Safe deposit box, home safe, attorney's office, etc.">
+                    </div>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Property #2</h4>
+                    <div class="form-group">
+                        <label for="property2_type">Property Type</label>
+                        <select id="property2_type" name="property2_type">
+                            <option value="">-- Select --</option>
+                            <option value="Primary Residence">Primary Residence</option>
+                            <option value="Vacation Home">Vacation Home</option>
+                            <option value="Rental Property">Rental Property</option>
+                            <option value="Land">Land/Lot</option>
+                            <option value="Commercial">Commercial Property</option>
+                            <option value="Timeshare">Timeshare</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="property2_address">Address</label>
+                        <input type="text" id="property2_address" name="property2_address">
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="property2_value">Estimated Value</label>
+                            <input type="text" id="property2_value" name="property2_value" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="property2_mortgage">Mortgage Balance</label>
+                            <input type="text" id="property2_mortgage" name="property2_mortgage" placeholder="$">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="property2_ownership">How is title held?</label>
+                        <select id="property2_ownership" name="property2_ownership">
+                            <option value="">-- Select --</option>
+                            <option value="Sole Ownership">Sole Ownership (your name only)</option>
+                            <option value="Joint Tenants">Joint Tenants with Right of Survivorship</option>
+                            <option value="Tenants in Common">Tenants in Common</option>
+                            <option value="Tenants by Entirety">Tenants by the Entirety (married)</option>
+                            <option value="Trust">In Trust</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_properties">Additional Properties (list briefly)</label>
+                    <textarea id="additional_properties" name="additional_properties" placeholder="Property 3: Address, Type, Estimated Value&#10;Property 4: Address, Type, Estimated Value"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- BANK ACCOUNTS -->
+            <fieldset>
+                <legend>Bank Accounts & Cash</legend>
+                
+                <div class="note">
+                    <p>Include checking, savings, money market accounts, and CDs. You do NOT need to provide account numbers - just institution name, type, and approximate balance.</p>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Account #1</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="bank1_institution">Institution Name</label>
+                            <input type="text" id="bank1_institution" name="bank1_institution" placeholder="e.g., Wells Fargo, Bank of America">
+                        </div>
+                        <div class="form-group">
+                            <label for="bank1_type">Account Type</label>
+                            <select id="bank1_type" name="bank1_type">
+                                <option value="">-- Select --</option>
+                                <option value="Checking">Checking</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Money Market">Money Market</option>
+                                <option value="CD">Certificate of Deposit (CD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="bank1_balance">Approximate Balance</label>
+                            <input type="text" id="bank1_balance" name="bank1_balance" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="bank1_ownership">Account Ownership</label>
+                            <select id="bank1_ownership" name="bank1_ownership">
+                                <option value="">-- Select --</option>
+                                <option value="Individual">Individual (your name only)</option>
+                                <option value="Joint">Joint (with another person)</option>
+                                <option value="POD">Payable on Death (POD)</option>
+                                <option value="TOD">Transfer on Death (TOD)</option>
+                                <option value="Trust">In Trust</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bank1_beneficiary">Designated Beneficiary (if any)</label>
+                        <input type="text" id="bank1_beneficiary" name="bank1_beneficiary">
+                    </div>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Account #2</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="bank2_institution">Institution Name</label>
+                            <input type="text" id="bank2_institution" name="bank2_institution">
+                        </div>
+                        <div class="form-group">
+                            <label for="bank2_type">Account Type</label>
+                            <select id="bank2_type" name="bank2_type">
+                                <option value="">-- Select --</option>
+                                <option value="Checking">Checking</option>
+                                <option value="Savings">Savings</option>
+                                <option value="Money Market">Money Market</option>
+                                <option value="CD">Certificate of Deposit (CD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="bank2_balance">Approximate Balance</label>
+                            <input type="text" id="bank2_balance" name="bank2_balance" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="bank2_ownership">Account Ownership</label>
+                            <select id="bank2_ownership" name="bank2_ownership">
+                                <option value="">-- Select --</option>
+                                <option value="Individual">Individual (your name only)</option>
+                                <option value="Joint">Joint (with another person)</option>
+                                <option value="POD">Payable on Death (POD)</option>
+                                <option value="TOD">Transfer on Death (TOD)</option>
+                                <option value="Trust">In Trust</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_bank_accounts">Additional Bank Accounts (list briefly)</label>
+                    <textarea id="additional_bank_accounts" name="additional_bank_accounts" placeholder="Account 3: Institution, Type, Balance&#10;Account 4: Institution, Type, Balance"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- INVESTMENT & RETIREMENT ACCOUNTS -->
+            <fieldset>
+                <legend>Investment & Retirement Accounts</legend>
+                
+                <div class="note">
+                    <p>Include 401(k), IRA, Roth IRA, brokerage accounts, mutual funds, stocks, bonds, etc.</p>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Account #1</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="invest1_institution">Institution/Company</label>
+                            <input type="text" id="invest1_institution" name="invest1_institution" placeholder="e.g., Fidelity, Vanguard, Charles Schwab">
+                        </div>
+                        <div class="form-group">
+                            <label for="invest1_type">Account Type</label>
+                            <select id="invest1_type" name="invest1_type">
+                                <option value="">-- Select --</option>
+                                <option value="401k">401(k)</option>
+                                <option value="403b">403(b)</option>
+                                <option value="Traditional IRA">Traditional IRA</option>
+                                <option value="Roth IRA">Roth IRA</option>
+                                <option value="SEP IRA">SEP IRA</option>
+                                <option value="Brokerage">Brokerage Account</option>
+                                <option value="Mutual Funds">Mutual Funds</option>
+                                <option value="Stocks">Individual Stocks</option>
+                                <option value="Bonds">Bonds</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="invest1_value">Current Value (approximate)</label>
+                        <input type="text" id="invest1_value" name="invest1_value" placeholder="$">
+                    </div>
+                    <div class="form-group">
+                        <label for="invest1_beneficiary">Primary Beneficiary</label>
+                        <input type="text" id="invest1_beneficiary" name="invest1_beneficiary">
+                        <p class="help-text">Very important for retirement accounts!</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="invest1_contingent">Contingent/Secondary Beneficiary</label>
+                        <input type="text" id="invest1_contingent" name="invest1_contingent">
+                    </div>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Account #2</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="invest2_institution">Institution/Company</label>
+                            <input type="text" id="invest2_institution" name="invest2_institution">
+                        </div>
+                        <div class="form-group">
+                            <label for="invest2_type">Account Type</label>
+                            <select id="invest2_type" name="invest2_type">
+                                <option value="">-- Select --</option>
+                                <option value="401k">401(k)</option>
+                                <option value="403b">403(b)</option>
+                                <option value="Traditional IRA">Traditional IRA</option>
+                                <option value="Roth IRA">Roth IRA</option>
+                                <option value="SEP IRA">SEP IRA</option>
+                                <option value="Brokerage">Brokerage Account</option>
+                                <option value="Mutual Funds">Mutual Funds</option>
+                                <option value="Stocks">Individual Stocks</option>
+                                <option value="Bonds">Bonds</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="invest2_value">Current Value (approximate)</label>
+                        <input type="text" id="invest2_value" name="invest2_value" placeholder="$">
+                    </div>
+                    <div class="form-group">
+                        <label for="invest2_beneficiary">Primary Beneficiary</label>
+                        <input type="text" id="invest2_beneficiary" name="invest2_beneficiary">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_investments">Additional Investment/Retirement Accounts</label>
+                    <textarea id="additional_investments" name="additional_investments" placeholder="Account 3: Institution, Type, Value, Beneficiary"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- LIFE INSURANCE -->
+            <fieldset>
+                <legend>Life Insurance & Annuities</legend>
+                
+                <div class="asset-item">
+                    <h4>Policy #1</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="life1_company">Insurance Company</label>
+                            <input type="text" id="life1_company" name="life1_company">
+                        </div>
+                        <div class="form-group">
+                            <label for="life1_type">Policy Type</label>
+                            <select id="life1_type" name="life1_type">
+                                <option value="">-- Select --</option>
+                                <option value="Term Life">Term Life</option>
+                                <option value="Whole Life">Whole Life</option>
+                                <option value="Universal Life">Universal Life</option>
+                                <option value="Annuity">Annuity</option>
+                                <option value="Group">Group Life (through employer)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="life1_death_benefit">Death Benefit / Face Value</label>
+                            <input type="text" id="life1_death_benefit" name="life1_death_benefit" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="life1_cash_value">Cash Value (if applicable)</label>
+                            <input type="text" id="life1_cash_value" name="life1_cash_value" placeholder="$">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="life1_insured">Person Insured</label>
+                        <input type="text" id="life1_insured" name="life1_insured" placeholder="Yourself, spouse, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="life1_beneficiary">Primary Beneficiary</label>
+                        <input type="text" id="life1_beneficiary" name="life1_beneficiary">
+                    </div>
+                    <div class="form-group">
+                        <label for="life1_contingent">Contingent Beneficiary</label>
+                        <input type="text" id="life1_contingent" name="life1_contingent">
+                    </div>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Policy #2</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="life2_company">Insurance Company</label>
+                            <input type="text" id="life2_company" name="life2_company">
+                        </div>
+                        <div class="form-group">
+                            <label for="life2_type">Policy Type</label>
+                            <select id="life2_type" name="life2_type">
+                                <option value="">-- Select --</option>
+                                <option value="Term Life">Term Life</option>
+                                <option value="Whole Life">Whole Life</option>
+                                <option value="Universal Life">Universal Life</option>
+                                <option value="Annuity">Annuity</option>
+                                <option value="Group">Group Life (through employer)</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="life2_death_benefit">Death Benefit / Face Value</label>
+                            <input type="text" id="life2_death_benefit" name="life2_death_benefit" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="life2_cash_value">Cash Value (if applicable)</label>
+                            <input type="text" id="life2_cash_value" name="life2_cash_value" placeholder="$">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="life2_beneficiary">Primary Beneficiary</label>
+                        <input type="text" id="life2_beneficiary" name="life2_beneficiary">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_life_insurance">Additional Policies</label>
+                    <textarea id="additional_life_insurance" name="additional_life_insurance"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- VEHICLES & PERSONAL PROPERTY -->
+            <fieldset>
+                <legend>Vehicles & Valuable Personal Property</legend>
+                
+                <h3>Vehicles</h3>
+                <div class="note">
+                    <p>Cars, trucks, motorcycles, boats, RVs, ATVs, etc.</p>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Vehicle #1</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="vehicle1_description">Year, Make, Model</label>
+                            <input type="text" id="vehicle1_description" name="vehicle1_description" placeholder="e.g., 2020 Toyota Camry">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle1_value">Estimated Value</label>
+                            <input type="text" id="vehicle1_value" name="vehicle1_value" placeholder="$">
+                        </div>
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="vehicle1_loan">Loan Balance (if any)</label>
+                            <input type="text" id="vehicle1_loan" name="vehicle1_loan" placeholder="$">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle1_owner">Titled in whose name?</label>
+                            <input type="text" id="vehicle1_owner" name="vehicle1_owner">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Vehicle #2</h4>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="vehicle2_description">Year, Make, Model</label>
+                            <input type="text" id="vehicle2_description" name="vehicle2_description">
+                        </div>
+                        <div class="form-group">
+                            <label for="vehicle2_value">Estimated Value</label>
+                            <input type="text" id="vehicle2_value" name="vehicle2_value" placeholder="$">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_vehicles">Additional Vehicles</label>
+                    <textarea id="additional_vehicles" name="additional_vehicles"></textarea>
+                </div>
+
+                <hr>
+
+                <h3>Valuable Personal Property</h3>
+                <div class="note">
+                    <p>Jewelry, art, collectibles, antiques, firearms, etc. (items valued over $1,000)</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="jewelry">Jewelry</label>
+                    <textarea id="jewelry" name="jewelry" placeholder="Description and approximate value"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="art_collectibles">Art, Collectibles, Antiques</label>
+                    <textarea id="art_collectibles" name="art_collectibles" placeholder="Description and approximate value"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="firearms">Firearms</label>
+                    <textarea id="firearms" name="firearms" placeholder="Description and approximate value"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="other_valuables">Other Valuable Items</label>
+                    <textarea id="other_valuables" name="other_valuables" placeholder="Tools, equipment, electronics, musical instruments, etc."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- BUSINESS INTERESTS -->
+            <fieldset>
+                <legend>Business Interests & Partnerships</legend>
+                
+                <div class="note">
+                    <p>Ownership in any business, LLC, corporation, partnership, or professional practice</p>
+                </div>
+
+                <div class="asset-item">
+                    <h4>Business #1</h4>
+                    <div class="form-group">
+                        <label for="business1_name">Business Name</label>
+                        <input type="text" id="business1_name" name="business1_name">
+                    </div>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label for="business1_type">Entity Type</label>
+                            <select id="business1_type" name="business1_type">
+                                <option value="">-- Select --</option>
+                                <option value="Sole Proprietorship">Sole Proprietorship</option>
+                                <option value="LLC">LLC</option>
+                                <option value="Corporation">Corporation (C-Corp or S-Corp)</option>
+                                <option value="Partnership">Partnership</option>
+                                <option value="Professional Practice">Professional Practice</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="business1_ownership">Your Ownership %</label>
+                            <input type="text" id="business1_ownership" name="business1_ownership" placeholder="%">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="business1_value">Estimated Value of Your Interest</label>
+                        <input type="text" id="business1_value" name="business1_value" placeholder="$">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_businesses">Additional Business Interests</label>
+                    <textarea id="additional_businesses" name="additional_businesses"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- DIGITAL ASSETS -->
+            <fieldset>
+                <legend>Digital Assets & Online Property</legend>
+                
+                <div class="note">
+                    <p>Cryptocurrency, domain names, online businesses, digital media, etc.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="cryptocurrency">Cryptocurrency Holdings</label>
+                    <textarea id="cryptocurrency" name="cryptocurrency" placeholder="Bitcoin, Ethereum, etc. - Platform/Exchange and approximate value"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="domain_names">Domain Names / Websites</label>
+                    <textarea id="domain_names" name="domain_names" placeholder="Valuable domain names or online businesses"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="digital_media">Digital Media / Intellectual Property</label>
+                    <textarea id="digital_media" name="digital_media" placeholder="Online courses, ebooks, music, photography, patents, copyrights, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="social_media_value">Monetized Social Media Accounts</label>
+                    <textarea id="social_media_value" name="social_media_value" placeholder="YouTube channels, Instagram accounts with significant following/revenue"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- DEBTS & LIABILITIES -->
+            <fieldset>
+                <legend>Debts & Liabilities</legend>
+                
+                <div class="note">
+                    <p>Outstanding debts help us understand your net estate value</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="mortgage_debt">Mortgage Debt (not already listed above)</label>
+                    <textarea id="mortgage_debt" name="mortgage_debt" placeholder="Lender and approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="auto_loans">Auto Loans (not already listed)</label>
+                    <textarea id="auto_loans" name="auto_loans" placeholder="Lender and approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="credit_card_debt">Credit Card Debt</label>
+                    <textarea id="credit_card_debt" name="credit_card_debt" placeholder="Total approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="student_loans">Student Loans</label>
+                    <textarea id="student_loans" name="student_loans" placeholder="Lender and approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="personal_loans">Personal Loans</label>
+                    <textarea id="personal_loans" name="personal_loans" placeholder="Lender and approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="business_debt">Business Loans/Debt</label>
+                    <textarea id="business_debt" name="business_debt" placeholder="Lender and approximate balance"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="other_debt">Other Debts</label>
+                    <textarea id="other_debt" name="other_debt" placeholder="Medical bills, tax liens, judgments, etc."></textarea>
+                </div>
+            </fieldset>
+
+            <!-- IMPORTANT DOCUMENTS -->
+            <fieldset>
+                <legend>Location of Important Documents</legend>
+                
+                <div class="note">
+                    <p>This helps your executor and family locate important documents when needed</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="safe_deposit_box">Safe Deposit Box Location</label>
+                    <input type="text" id="safe_deposit_box" name="safe_deposit_box" placeholder="Bank name and branch location">
+                </div>
+
+                <div class="form-group">
+                    <label for="safe_deposit_key">Where is the key located?</label>
+                    <input type="text" id="safe_deposit_key" name="safe_deposit_key">
+                </div>
+
+                <div class="form-group">
+                    <label for="home_safe">Home Safe Location</label>
+                    <input type="text" id="home_safe" name="home_safe" placeholder="e.g., Master bedroom closet">
+                </div>
+
+                <div class="form-group">
+                    <label for="deed_location">Property Deeds</label>
+                    <input type="text" id="deed_location" name="deed_location" placeholder="Where are original deeds kept?">
+                </div>
+
+                <div class="form-group">
+                    <label for="title_location">Vehicle Titles</label>
+                    <input type="text" id="title_location" name="title_location" placeholder="Where are vehicle titles kept?">
+                </div>
+
+                <div class="form-group">
+                    <label for="insurance_policies_location">Insurance Policies</label>
+                    <input type="text" id="insurance_policies_location" name="insurance_policies_location" placeholder="Where are life insurance policies kept?">
+                </div>
+
+                <div class="form-group">
+                    <label for="investment_statements">Investment/Retirement Account Statements</label>
+                    <input type="text" id="investment_statements" name="investment_statements" placeholder="Where are recent statements kept?">
+                </div>
+
+                <div class="form-group">
+                    <label for="tax_returns">Tax Returns</label>
+                    <input type="text" id="tax_returns" name="tax_returns" placeholder="Where are past tax returns kept?">
+                </div>
+
+                <div class="form-group">
+                    <label for="digital_passwords">Password Manager / Digital Vault</label>
+                    <input type="text" id="digital_passwords" name="digital_passwords" placeholder="e.g., LastPass, 1Password - Do NOT enter actual passwords here">
+                    <p class="help-text">Never share actual passwords in this form - just note where they're stored</p>
+                </div>
+            </fieldset>
+
+            <!-- SUMMARY -->
+            <div class="summary-box">
+                <h4>📝 What Happens Next?</h4>
+                <p>After submitting this inventory:</p>
+                <ul style="margin-left: 25px; margin-top: 10px;">
+                    <li>We'll review your assets and liabilities</li>
+                    <li>Identify any estate planning needs or concerns</li>
+                    <li>Discuss strategies to protect and transfer your assets</li>
+                    <li>Recommend appropriate estate planning documents</li>
+                </ul>
+            </div>
+
+            <button type="submit">Submit Asset Inventory</button>
+        </form>
+
+        <div class="footer">
+            <p><strong>Turner Law Firm, PLLC</strong></p>
+            <p style="margin-top: 10px;">Charlotte Office: 13950 Ballantyne Corporate Pl., Ste. 160, Charlotte, NC 28277 | O: 704-496-9095</p>
+            <p>Cary Office: 5000 Centre Green Way, Ste. 500, Cary, NC 27513 | O: 919-998-8311</p>
+            <p style="margin-top: 10px;">Email: Tiffany@TurnerLawFirmPLLC.com | www.TurnerLawFirmPLLC.com</p>
+        </div>
+    </div>
+</body>
+</html>
