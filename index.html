@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Client Intake - Turner Law Firm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(to bottom, #f8f8f8 0%, #ffffff 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 50px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 3px solid #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header .tagline {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .header h2 {
+            color: #444;
+            font-size: 1.6em;
+            margin-top: 20px;
+        }
+
+        .intro {
+            background-color: #e8f4f8;
+            border-left: 4px solid #4a90e2;
+            padding: 20px;
+            margin-bottom: 35px;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        .intro p {
+            margin-bottom: 10px;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            color: #1a1a1a;
+            font-size: 1.3em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .required {
+            color: #c0392b;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1.05em;
+            font-family: inherit;
+            background-color: #fff;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #1a1a1a;
+            box-shadow: 0 0 5px rgba(26, 26, 26, 0.2);
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 12px 0;
+        }
+
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 1.02em;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .conditional-field {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #e0e0e0;
+            margin-top: 15px;
+        }
+
+        button[type="submit"] {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto 0;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #333;
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header h2 {
+                font-size: 1.3em;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @media print {
+            body {
+                background: #fff;
+            }
+
+            .container {
+                box-shadow: none;
+            }
+
+            button[type="submit"] {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>TURNER LAW FIRM<span style="font-size: 0.6em;">, PLLC</span></h1>
+            <p class="tagline">"Because Life Happens"</p>
+            <h2>New Client Intake Form</h2>
+        </div>
+
+        <div class="intro">
+            <p><strong>Welcome!</strong> Thank you for choosing Turner Law Firm. This brief form helps us serve you better.</p>
+            <p>All information you provide is strictly confidential and will be used only for legal services.</p>
+            <p><span class="required">*</span> Required field</p>
+        </div>
+
+        <form action="/submit-client-intake" method="POST">
+            
+            <!-- PERSONAL INFORMATION -->
+            <div class="form-section">
+                <h3 class="section-title">Personal Information</h3>
+                
+                <div class="form-group">
+                    <label for="full_name">Full Legal Name <span class="required">*</span></label>
+                    <input type="text" id="full_name" name="full_name" required placeholder="First Middle Last">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone_number">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone_number" name="phone_number" required placeholder="(123) 456-7890">
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Complete Address</label>
+                    <textarea id="address" name="address" placeholder="Street Address, City, State, ZIP Code"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_of_birth">Date of Birth</label>
+                    <input type="date" id="date_of_birth" name="date_of_birth">
+                </div>
+            </div>
+
+            <!-- MARITAL & FAMILY -->
+            <div class="form-section">
+                <h3 class="section-title">Marital Status</h3>
+                
+                <div class="form-group">
+                    <label for="marital_status">Current Marital Status <span class="required">*</span></label>
+                    <select id="marital_status" name="marital_status" required onchange="toggleSpouseFields()">
+                        <option value="">-- Please Select --</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Separated">Separated</option>
+                        <option value="Widowed">Widowed</option>
+                    </select>
+                </div>
+
+                <div id="spouse_fields" class="conditional-field" style="display: none;">
+                    <div class="form-group">
+                        <label for="spouse_name">Spouse's Full Name</label>
+                        <input type="text" id="spouse_name" name="spouse_name" placeholder="First Middle Last">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="spouse_dob">Spouse's Date of Birth</label>
+                        <input type="date" id="spouse_dob" name="spouse_dob">
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEGAL SERVICES -->
+            <div class="form-section">
+                <h3 class="section-title">Legal Services Needed</h3>
+                
+                <div class="form-group">
+                    <label for="practice_area">What type of legal assistance do you need? <span class="required">*</span></label>
+                    <select id="practice_area" name="practice_area" required>
+                        <option value="">-- Please Select --</option>
+                        <option value="Estate Planning">Estate Planning (Wills, Trusts, Powers of Attorney)</option>
+                        <option value="Real Estate">Real Estate (Purchase, Sale, Closings)</option>
+                        <option value="Divorce">Divorce & Family Law</option>
+                        <option value="Bankruptcy">Bankruptcy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="brief_description">Brief Description of Your Legal Matter</label>
+                    <textarea id="brief_description" name="brief_description" placeholder="Please provide a brief summary of why you're seeking legal assistance..."></textarea>
+                    <p class="help-text">This helps us prepare for your consultation and assign the right attorney.</p>
+                </div>
+            </div>
+
+            <!-- LEGAL INSURANCE -->
+            <div class="form-section">
+                <h3 class="section-title">Legal Insurance Coverage</h3>
+                
+                <div class="form-group">
+                    <label for="has_legal_insurance">Do you have legal insurance or a prepaid legal plan? <span class="required">*</span></label>
+                    <select id="has_legal_insurance" name="has_legal_insurance" required onchange="toggleInsuranceFields()">
+                        <option value="">-- Please Select --</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div id="insurance_fields" class="conditional-field" style="display: none;">
+                    <div class="form-group">
+                        <label for="insurance_provider">Insurance Provider Name</label>
+                        <input type="text" id="insurance_provider" name="insurance_provider" placeholder="e.g., MetLife, ARAG, LegalShield">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="insurance_enrollment_id">Member/Enrollment ID</label>
+                        <input type="text" id="insurance_enrollment_id" name="insurance_enrollment_id" placeholder="Your member or enrollment number">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ADDITIONAL INFORMATION -->
+            <div class="form-section">
+                <h3 class="section-title">Additional Information</h3>
+                
+                <div class="form-group">
+                    <label for="how_did_you_hear">How did you hear about Turner Law Firm?</label>
+                    <select id="how_did_you_hear" name="how_did_you_hear">
+                        <option value="">-- Please Select --</option>
+                        <option value="Referral">Referral from friend/family</option>
+                        <option value="Online Search">Online search (Google, etc.)</option>
+                        <option value="Social Media">Social Media</option>
+                        <option value="Legal Insurance">Legal Insurance Provider</option>
+                        <option value="Previous Client">Previous Client</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferred_contact">Preferred Method of Contact</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="preferred_contact" value="Email"> Email</label>
+                        <label><input type="radio" name="preferred_contact" value="Phone"> Phone</label>
+                        <label><input type="radio" name="preferred_contact" value="Text"> Text Message</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional_notes">Any other information you'd like us to know?</label>
+                    <textarea id="additional_notes" name="additional_notes" placeholder="Special accommodations, scheduling preferences, etc."></textarea>
+                </div>
+            </div>
+
+            <button type="submit">Submit Intake Form</button>
+        </form>
+
+        <div class="footer">
+            <p><strong>Turner Law Firm, PLLC</strong></p>
+            <p style="margin-top: 10px;">Charlotte Office: 13950 Ballantyne Corporate Pl., Ste. 160, Charlotte, NC 28277 | O: 704-496-9095</p>
+            <p>Cary Office: 5000 Centre Green Way, Ste. 500, Cary, NC 27513 | O: 919-998-8311</p>
+            <p style="margin-top: 10px;">Email: Tiffany@TurnerLawFirmPLLC.com | www.TurnerLawFirmPLLC.com</p>
+        </div>
+    </div>
+
+    <script>
+        // Show/hide spouse fields based on marital status
+        function toggleSpouseFields() {
+            const maritalStatus = document.getElementById('marital_status').value;
+            const spouseFields = document.getElementById('spouse_fields');
+            
+            if (maritalStatus === 'Married') {
+                spouseFields.style.display = 'block';
+            } else {
+                spouseFields.style.display = 'none';
+            }
+        }
+
+        // Show/hide insurance fields based on selection
+        function toggleInsuranceFields() {
+            const hasInsurance = document.getElementById('has_legal_insurance').value;
+            const insuranceFields = document.getElementById('insurance_fields');
+            
+            if (hasInsurance === 'Yes') {
+                insuranceFields.style.display = 'block';
+            } else {
+                insuranceFields.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
